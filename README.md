@@ -30,5 +30,5 @@ Here:
 ![fig6](paper/fig6.png) 
 
 **Video**
-![Download Video](paper/animation.zip) 
+[Download Video](paper/animation.zip) 
 
