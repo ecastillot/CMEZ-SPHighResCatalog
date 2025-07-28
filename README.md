@@ -3,7 +3,7 @@
 Earthquake Depth Relocation using S-P Method in Culberson Mentone Earthquake Zone (CMEZ), Delaware, Texas 
 
 <div align="center">
-<a href="https://github.com/ecastillot/CMEZ-SPHighResCatalog/blob/main/paper/fig1.png"><img src="paper/fig1.png" alt="Open" width="200"/></a> <a href="https://github.com/ecastillot/CMEZ-SPHighResCatalog/blob/main/paper/fig6.png"><img src="paper/fig6.png" alt="Open" width="300"/></a> <a href="https://github.com/ecastillot/CMEZ-SPHighResCatalog/blob/main/paper/animation.mp4"><img src="paper/animation.png" alt="Open" width="250"/></a> 
+<a href="https://github.com/ecastillot/CMEZ-SPHighResCatalog/blob/main/paper/fig1.png"><img src="paper/fig1.png" alt="Open" width="200"/></a> <a href="https://github.com/ecastillot/CMEZ-SPHighResCatalog/blob/main/paper/fig6.png"><img src="paper/fig6.png" alt="Open" width="300"/></a> <a href="https://cometmail-my.sharepoint.com/:v:/g/personal/edc240000_utdallas_edu/EbhO-CWLvbtKn28gfObGleQBJt9mDpqd_rRQELAdcxdOEA?e=WX9whB"><img src="paper/animation.png" alt="Open" width="250"/></a> 
 </div>
 
 # Data
