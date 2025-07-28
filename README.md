@@ -31,6 +31,9 @@ Here:
 **Figure 6**
 ![fig6](paper/fig6.png) 
 
+**Figure 7**
+![fig6](paper/fig7.png)
+
 **Video**
 [Download Video](paper/animation.zip) 
 
