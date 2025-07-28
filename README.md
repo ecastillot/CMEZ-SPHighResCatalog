@@ -5,7 +5,7 @@ Earthquake Depth Relocation using S-P Method in Culberson Mentone Earthquake Zon
 
 | Data | OneDrive |
 |---|---|
-|All|[![Open](paper/onedrive.png)](https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/Ek_BuuZiKA1ErQctzvpquqwBAVLLJ6af5tCtjO8rRfQh2g?e=yTUaKe) |
+|All|<a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/Ek_BuuZiKA1ErQctzvpquqwBAVLLJ6af5tCtjO8rRfQh2g?e=yTUaKe"><img src="paper/onedrive.png" alt="Open" width="120"/></a> |
 
 
 # Paper
