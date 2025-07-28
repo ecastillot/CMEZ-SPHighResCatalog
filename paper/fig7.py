@@ -84,12 +84,17 @@ axes[0].tick_params(axis='both', labelsize=9)
 axes[0].set_ylabel("Depth from sea level (km)",fontsize=9)
 axes[0].set_title(None)
 axes[0].legend( loc='lower right',ncol=3)
+# vertical dashed line in 
+axes[0].axvline(pd.to_datetime("2020-03-01"), color="red", 
+                linestyle="--", linewidth=2)
 
 axes[1].set_xlabel("Time",fontsize=9)
 axes[1].tick_params(axis='both', labelsize=9)
 axes[1].set_ylabel("Depth from sea level (km)",fontsize=9)
 axes[1].set_title(None)
 axes[1].legend( loc='lower right',ncol=3)
+axes[1].axvline(pd.to_datetime("2020-03-01"), color="red", 
+                linestyle="--", linewidth=2)
 
 # Auto-labeling with letters (a), (b), (c), ...
 for n, ax in enumerate(axes):
