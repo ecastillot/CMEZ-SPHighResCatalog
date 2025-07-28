@@ -2,6 +2,8 @@
 
 Earthquake Depth Relocation using S-P Method in Culberson Mentone Earthquake Zone (CMEZ), Delaware, Texas 
 
+<a href="https://github.com/ecastillot/CMEZ-SPHighResCatalog/blob/main/paper/fig1.png"><img src="paper/fig1.png" alt="Open" width="200"/></a> <a href="https://github.com/ecastillot/CMEZ-SPHighResCatalog/blob/main/paper/fig6.png"><img src="paper/fig6.png" alt="Open" width="200"/></a> <a href="https://github.com/ecastillot/CMEZ-SPHighResCatalog/blob/main/paper/animation.mp4"><img src="paper/animation.png" alt="Open" width="200"/></a> 
+
 # Data
 
 **All data is saved here**: <a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/Ek_BuuZiKA1ErQctzvpquqwBAVLLJ6af5tCtjO8rRfQh2g?e=lKeYlZ"><img src="paper/onedrive.png" alt="Open" width="40"/></a> 
@@ -47,8 +49,8 @@ Here:
 ![fig6](paper/fig6.png) 
 
 **Figure 7**
-![fig6](paper/fig7.png)
+![fig7](paper/fig7.png)
 
 **Video**
-[Download Video](paper/animation.zip) 
+![Animation](paper/animation.png)
 
