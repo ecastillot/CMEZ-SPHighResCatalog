@@ -1,10 +1,10 @@
 # SP High Resolution Catalog in Culberson Mentone Earthquake Zone (CMEZ), Delaware Texas 
 
-Earthquake Depth Relocation using S-P Method in Culberson Mentone Earthquake Zone (CMEZ), Delaware Texas 
+Earthquake Depth Relocation using S-P Method in Culberson Mentone Earthquake Zone (CMEZ), Delaware, Texas 
 
 # Data
 
-All data is saved here:  <a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/Ek_BuuZiKA1ErQctzvpquqwBAVLLJ6af5tCtjO8rRfQh2g?e=lKeYlZ"><img src="paper/onedrive.png" alt="Open" width="40"/></a> 
+**All data is saved here**: <a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/Ek_BuuZiKA1ErQctzvpquqwBAVLLJ6af5tCtjO8rRfQh2g?e=lKeYlZ"><img src="paper/onedrive.png" alt="Open" width="40"/></a> 
 
 Feel free to use the **Python Scripts** located in **Paper section** to recreate the figures of the paper.
 
@@ -20,7 +20,7 @@ You can also download your specific data in the following sections:
 ## Others
 | | Basement | Elevation | ts_tp | Vp | Vp/Vs |
 |---|---|---|---|---|---|
-|Data|<a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/Els1pLzvvmxIg8pDo3QBA0ABXOYRqs0j-k5W6NPfDVlZdw?e=R7XeH0"><img src="paper/onedrive.png" alt="Open" width="40"/></a> |<a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/Epn8fL8kmL5AuV32FFF3b5EB3IWv1ws48fX44H0Jng8Pmg?e=rFdUyO"><img src="paper/onedrive.png" alt="Open" width="40"/></a> | <a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/EoNqLRaewIFEqeRo-gDMVckBmmpZqLlUbGyn1vYFUXgH_Q?e=XljPXT"><img src="paper/onedrive.png" alt="Open" width="40"/></a> | <a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/EsQpX-Dqnf9Ps1yMr02NQi8B_HpHF6R41HEzzoZUgJgPrQ?e=cKtFXm"><img src="paper/onedrive.png" alt="Open" width="40"/></a> | <a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/En6KfLHJlohGkRYnNPAwA8QBxBSHwsWyfg5GVR4qSjcmOg?e=Rp1AH7"><img src="paper/onedrive.png" alt="Open" width="40"/></a> |
+|Data|<a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/Els1pLzvvmxIg8pDo3QBA0ABXOYRqs0j-k5W6NPfDVlZdw?e=R7XeH0"><img src="paper/onedrive.png" alt="Open" width="40" style="display:block; margin:auto"/></a> |<a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/Epn8fL8kmL5AuV32FFF3b5EB3IWv1ws48fX44H0Jng8Pmg?e=rFdUyO"><img src="paper/onedrive.png" alt="Open" width="40"/></a> | <a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/EoNqLRaewIFEqeRo-gDMVckBmmpZqLlUbGyn1vYFUXgH_Q?e=XljPXT"><img src="paper/onedrive.png" alt="Open" width="40"/></a> | <a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/EsQpX-Dqnf9Ps1yMr02NQi8B_HpHF6R41HEzzoZUgJgPrQ?e=cKtFXm"><img src="paper/onedrive.png" alt="Open" width="40"/></a> | <a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/En6KfLHJlohGkRYnNPAwA8QBxBSHwsWyfg5GVR4qSjcmOg?e=Rp1AH7"><img src="paper/onedrive.png" alt="Open" width="40"/></a> |
 
 # Paper
 
