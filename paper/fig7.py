@@ -79,15 +79,15 @@ plot_depth_vs_time_by_region_with_iqr(sp_events,
                                       legend=False,
                                       ax=axes[1])
 
-axes[0].set_xlabel(None,fontsize=10)
-axes[0].tick_params(axis='both', labelsize=10)
-axes[0].set_ylabel("Depth from sea level (km)",fontsize=10)
+axes[0].set_xlabel(None,fontsize=9)
+axes[0].tick_params(axis='both', labelsize=9)
+axes[0].set_ylabel("Depth from sea level (km)",fontsize=9)
 axes[0].set_title(None)
 axes[0].legend( loc='lower right',ncol=3)
 
-axes[1].set_xlabel("Time",fontsize=10)
-axes[1].tick_params(axis='both', labelsize=10)
-axes[1].set_ylabel("Depth from sea level (km)",fontsize=10)
+axes[1].set_xlabel("Time",fontsize=9)
+axes[1].tick_params(axis='both', labelsize=9)
+axes[1].set_ylabel("Depth from sea level (km)",fontsize=9)
 axes[1].set_title(None)
 axes[1].legend( loc='lower right',ncol=3)
 
