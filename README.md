@@ -11,6 +11,8 @@ Earthquake Depth Relocation using S-P Method in Culberson Mentone Earthquake Zon
 
 Here:
 
+# Figures
+
 **Figure 1**
 ![fig1](paper/fig1.png)  
 
