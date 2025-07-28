@@ -1,9 +1,10 @@
-# CMEZ_SPDepthRelocation
-Earthquake Depth Relocation using S-P Method in Culberson Mentone Earthquake Zone (CMEZ), Delaware Texas 
+# Earthquake Depth Relocation using S-P Method in Culberson Mentone Earthquake Zone (CMEZ), Delaware Texas 
 
 # Data
 
-All data is saved here:  [Data](https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/Ek_BuuZiKA1ErQctzvpquqwBAVLLJ6af5tCtjO8rRfQh2g?e=lKeYlZ). Feel free to use the **Python Scripts** located in **Paper section** to recreate the figures of the paper.
+All data is saved here:  <a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/Ek_BuuZiKA1ErQctzvpquqwBAVLLJ6af5tCtjO8rRfQh2g?e=lKeYlZ"><img src="paper/onedrive.png" alt="Open" width="40"/></a> 
+
+Feel free to use the **Python Scripts** located in **Paper section** to recreate the figures of the paper.
 
 You can also download your specific data in the following sections:
 
