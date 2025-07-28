@@ -1,4 +1,6 @@
-# Earthquake Depth Relocation using S-P Method in Culberson Mentone Earthquake Zone (CMEZ), Delaware Texas 
+# SP High Resolution Catalog in Culberson Mentone Earthquake Zone (CMEZ), Delaware Texas 
+
+Earthquake Depth Relocation using S-P Method in Culberson Mentone Earthquake Zone (CMEZ), Delaware Texas 
 
 # Data
 
