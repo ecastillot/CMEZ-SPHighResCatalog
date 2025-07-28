@@ -57,7 +57,7 @@ def get_region(row):
 df_events["region"] = df_events.apply(get_region,axis=1)
 sp_events = df_events.copy()
 
-fig, axes = plt.subplots(2, 1, figsize=(5, 6))
+fig, axes = plt.subplots(2, 1, figsize=(8, 14))
 
 # First plot: depth vs time with IQR
 plot_depth_vs_time_by_region_with_iqr(df_events,
