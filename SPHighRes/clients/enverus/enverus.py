@@ -792,7 +792,7 @@ if __name__ == "__main__":
     # Cpeng
     ## eneverus get data
     user = "emmanuel.castillotaborda@utdallas.edu"
-    pss = "Sismologia#1804"
+    pss = "dddddd"
     download_folder = "/home/emmanuel/ecastillo/dev/delaware/10102024/data_git/enverus/EnverusData_cpeng/all_data"
     df = pd.read_csv("/home/emmanuel/ecastillo/dev/delaware/10102024/data_git/enverus/EnverusData_cpeng/env_csv-Logs-9eb6d_2025-01-30.csv")
     client = Client(user,pss)
@@ -873,7 +873,7 @@ if __name__ == "__main__":
 
     ## eneverus get data
     # user = "emmanuel.castillotaborda@utdallas.edu"
-    # pss = "Sismologia#1804"
+    # pss = "dddddd"
     # download_folder = "/home/emmanuel/ecastillo/dev/delaware/10102024/data_git/enverus/test"
 
     # df = pd.read_csv("/home/emmanuel/ecastillo/dev/delaware/10102024/data_git/enverus/EnverusData_AOI/env_csv-Logs-158d7_2024-12-23.csv")

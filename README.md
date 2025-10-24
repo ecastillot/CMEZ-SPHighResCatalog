@@ -8,7 +8,13 @@ Earthquake Depth Relocation using S-P Method in Culberson Mentone Earthquake Zon
 
 # Data
 
-**All data is saved here**: <a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/Ek_BuuZiKA1ErQctzvpquqwBAVLLJ6af5tCtjO8rRfQh2g?e=lKeYlZ"><img src="paper/onedrive.png" alt="Open" width="40"/></a> 
+**All data is saved here**: 
+
+
+| All Data |
+|---|
+| <a href="https://cometmail-my.sharepoint.com/:f:/g/personal/edc240000_utdallas_edu/Ek_BuuZiKA1ErQctzvpquqwBAVLLJ6af5tCtjO8rRfQh2g?e=lKeYlZ"><img src="paper/onedrive.png" alt="Open" width="40"/></a> |
+
 
 Feel free to use the **Python Scripts** located in **Paper section** to recreate the figures of the paper.
 
