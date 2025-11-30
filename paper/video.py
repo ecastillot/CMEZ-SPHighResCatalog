@@ -10,7 +10,8 @@ import os
 
 # Function to load data
 def load_data(data_path):
-    sphighres_path = os.path.join(data_path,"earthquakes","SPHighRes","SPHighRes.csv")
+    sphighres_path = "/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/data/z/summary_reloc_standard_30km_with_region.csv"
+    # sphighres_path = "/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/data/z/summary_reloc_standard_30km.csv"
     stations_path = os.path.join(data_path,"stations","delaware_onlystations_160824.csv")
     basement_top_path =  os.path.join(data_path,"basement","cross_plot_data_31.7_-104.8_31.7_-103.8.csv")
     elevation_path =  os.path.join(data_path,"terrain","cross_elevation_plot_data_31.7_-104.8_31.7_-103.8.csv")
@@ -20,6 +21,8 @@ def load_data(data_path):
     cross_elv_data = pd.read_csv(elevation_path )  
     cross_elv_data["Elevation"] = cross_elv_data["Elevation"]*-1/1e3 #meters and elevation is negative
     df = pd.read_csv(sphighres_path, parse_dates=["origin_time"])
+    df["region"] = df["region"].apply(lambda x: int(x[1]) if pd.notnull(x) else np.nan)
+    # print(df["region"])
     return df, cross_plot_data, cross_elv_data, stations
 
 # Function to preprocess and prepare the data
@@ -32,7 +35,7 @@ def preprocess_data(df, cross_elv_data):
 
 def preprocess_stations(stations, cross_elv_data):
     color_regions = {1:"magenta",2:"blue",3:"green"}
-    station_regions = {"PB35": 1, "PB36": 1, "PB28": 1, "PB37": 1, "SA02": 2, "WB03": 3, "PB24": 3}
+    station_regions = {"PB35": 1, "PB36": 1, "PB28": 1, "PB37": 1, "SA02": 2,"PB26":2, "PB31":3,"WB03": 3, "PB24": 3}
     stations = stations[stations["station"].isin(list(station_regions.keys()))]
     stations["region"] = stations["station"].apply(lambda x: station_regions[x])
     stations["color"] = stations["region"].apply(lambda x: color_regions[x])
@@ -110,7 +113,7 @@ def update(frame, df, sc, time_text):
     
     # Update the scatter plot with new data points
     sc.set_offsets(np.column_stack([current_month['longitude'],
-                                    current_month['z_new_from_surface']]))
+                                    current_month['z_new_from_sea_level']]))
     sc.set_array(current_month['origin_time_numeric'])  # Color points based on 'origin_time_numeric'
     
     # Update the dynamic text for the time frame

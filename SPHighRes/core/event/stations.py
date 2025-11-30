@@ -8,8 +8,10 @@
 
 from .spatial  import Points
 from ..database.database import save_to_sqlite
+from SPHighRes.plot.sp import prepare_sp_analysis
 from tqdm import tqdm
 import os
+import pandas as pd
 
 class Stations(Points):
     def __init__(self, *args,**kwargs) -> None:
@@ -48,13 +50,14 @@ class Stations(Points):
         for i, row in tqdm(sta_data.iterrows(), total=len(sta_data),
                            desc="Processing stations"):
             new_catalog = catalog.copy()
+            # print(row)
             if zmin is not None:
                 new_catalog.filter("depth", start=zmin)
             new_catalog.filter_by_r_az(latitude=row.latitude,
                                     longitude=row.longitude,
                                     r=rmax)
             # print(row.station,row.latitude,row.longitude,new_catalog)
-            
+            # print(new_catalog)
             if new_catalog.empty:
                 # print("bad",i,new_catalog)
                 continue
@@ -90,13 +93,36 @@ class Stations(Points):
                                     db_path=sp_picks_path,
                                     table_name=row.station
                                     )
-        
-        # new_catalog = Catalog(data=new_catalog,xy_epsg=self.xy_epsg)        
+            
             all_events[row.station].append(new_catalog)
             
             if picks_path is not None:
                 all_picks[row.station].append(picks)
-        return all_events,all_picks
+        
+        catalog = [ x[0].data for x in all_events.values() if x != []]
+        picks = [ x[0].data for x in all_picks.values() if x != []]
+
+        if catalog == [] or picks == []:
+            return {"catalog":pd.DataFrame(),
+                    "picks":pd.DataFrame()}
+
+        catalog = pd.concat(catalog,ignore_index=True)
+        picks = pd.concat(picks,ignore_index=True)
+
+        catalog, sp_data = prepare_sp_analysis(catalog, picks, cat_columns_level=0)
+        sp_data["ts-tp"] = sp_data["tt_S"] - sp_data["tt_P"]
+        sp_data["ts-tp"] = sp_data["ts-tp"].astype(float)
+
+        if output_folder is not None:
+            sp_data_path = os.path.join(output_folder,
+                                    "sp_data.csv")
+            sp_data.to_csv(sp_data_path,index=False)
+
+
+        return {"catalog":catalog,
+                "picks":picks,
+                "sp_data":sp_data}
+    
         
     
     

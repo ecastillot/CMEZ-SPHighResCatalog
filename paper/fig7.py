@@ -13,10 +13,12 @@ from SPHighRes.plot.depthvstime import *
 
 data_path = os.path.join(cmez_repository_path, "data")
 
-sphighres_path = os.path.join(data_path,"earthquakes","SPHighRes","SPHighRes.csv")
+# sphighres_path = os.path.join(data_path,"earthquakes","SPHighRes","SPHighRes.csv")
+sphighres_path = "/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/data/z/summary_reloc_standard_30km.csv"
+outpath = "/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/data/z/summary_reloc_standard_30km_with_region.csv"
 stations_path = os.path.join(data_path,"stations","delaware_onlystations_160824.csv")
 basement_path =  os.path.join(data_path,"basement","TEXAS_basement_depth_km_AOI.tif")
-output_fig = os.path.join(os.path.dirname(__file__),"fig7.png")
+output_fig = os.path.join(os.path.dirname(__file__),"fig_7.png")
 
 start_lat, start_lon = 31.7, -104.8  # Replace with actual lat/lon
 end_lat, end_lon = 31.7, -103.8      # Replace with actual lat/lon
@@ -29,6 +31,9 @@ basement_xplot = get_basement_cross_plot_data(basement_path,start_point,
 
 
 df_events = pd.read_csv(sphighres_path) 
+df_events = df_events[~(df_events["preferred"]==False)]
+# df_events = df_events[df_events["Author_new"]=="S-P Method"]
+print(f"Total events: {len(df_events)}")
 elev_coords = basement_xplot[["Latitude", "Longitude"]].values
 elev_tree = cKDTree(elev_coords)
 # Get event coordinates
@@ -56,6 +61,8 @@ def get_region(row):
   return region
 df_events["region"] = df_events.apply(get_region,axis=1)
 sp_events = df_events.copy()
+
+df_events.to_csv(outpath,index=False)
 
 fig, axes = plt.subplots(2, 1, figsize=(5, 7))
 

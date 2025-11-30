@@ -341,7 +341,7 @@ def get_dw_models():
             - sheng_velmodel: The velocity model loaded from 'DW_model.csv'.
     """
     # Define the base directory path for the velocity model data
-    dw_path = "/home/emmanuel/ecastillo/dev/delaware/10102024/data_git/vel"
+    dw_path = "/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/data/vp"
 
     # Load the Sheng velocity model
     vel_path = os.path.join(dw_path, "DW_model.csv")  # Path to Sheng model CSV file
@@ -1041,6 +1041,93 @@ def well_fig(df,formations,
 
     return ax,global_legend_handles,vel_legend_handles
 
+def plot_intersections(ax, avg_vel, z_values, vp, z1, z2,
+                       marker_color="black", marker_size=6):
+    """
+    Robust intersection finder between:
+      - average velocity curve (avg_vel vs z_values)
+      - two bounding lines z1(vp), z2(vp)
+    Handles NaNs, None, unsorted data, and empty ranges safely.
+    """
+
+    import numpy as np
+    from scipy.interpolate import interp1d
+
+    # Convert to arrays
+    avg_vel = np.array(avg_vel, dtype=float)
+    z_values = np.array(z_values, dtype=float)
+    vp = np.array(vp, dtype=float)
+    z1 = np.array(z1, dtype=float)
+    z2 = np.array(z2, dtype=float)
+
+    # --- CLEAN RED CURVE (remove nan/None/etc.) ---
+    mask = ~np.isnan(avg_vel) & ~np.isnan(z_values)
+    if np.sum(mask) < 2:
+        return []  # not enough points to interpolate
+
+    avg_vel_clean = avg_vel[mask]
+    z_values_clean = z_values[mask]
+
+    # Ensure sorted by depth
+    sort_idx = np.argsort(z_values_clean)
+    z_values_clean = z_values_clean[sort_idx]
+    avg_vel_clean = avg_vel_clean[sort_idx]
+
+    # Red curve interpolation: z = f(vp)   *inverse*
+    try:
+        f_z_from_vp = interp1d(avg_vel_clean, z_values_clean,
+                               bounds_error=False, fill_value=np.nan)
+    except Exception:
+        return []  # curve invalid for inversion
+
+    # Interpolate z1 and z2
+    f_z1 = interp1d(vp, z1, bounds_error=False, fill_value=np.nan)
+    f_z2 = interp1d(vp, z2, bounds_error=False, fill_value=np.nan)
+
+    # Compute valid common VP range
+    vp_min = max(np.nanmin(vp), np.nanmin(avg_vel_clean))
+    vp_max = min(np.nanmax(vp), np.nanmax(avg_vel_clean))
+
+    if not np.isfinite(vp_min) or not np.isfinite(vp_max) or vp_min >= vp_max:
+        return []
+
+    vp_common = np.linspace(vp_min, vp_max, 600)
+
+    z_avg_common = f_z_from_vp(vp_common)
+    z1_common = f_z1(vp_common)
+    z2_common = f_z2(vp_common)
+
+    # --- Helper to locate sign change intersections ---
+    def find_intersection(zA, zB):
+        diff = zA - zB
+        idx = np.where(np.diff(np.sign(diff)))[0]
+        return idx[0] if len(idx) else None
+
+    idx1 = find_intersection(z_avg_common, z1_common)
+    idx2 = find_intersection(z_avg_common, z2_common)
+
+    intersections = []
+
+    # Plot intersection for z1
+    if idx1 is not None:
+        vp_int = vp_common[idx1]
+        z_int = z_avg_common[idx1]
+        if np.isfinite(vp_int) and np.isfinite(z_int):
+            ax.plot(vp_int, z_int, "o",
+                    markersize=marker_size, color=marker_color)
+            intersections.append(("z1", vp_int, z_int))
+
+    # Plot intersection for z2
+    if idx2 is not None:
+        vp_int = vp_common[idx2]
+        z_int = z_avg_common[idx2]
+        if np.isfinite(vp_int) and np.isfinite(z_int):
+            ax.plot(vp_int, z_int, "o",
+                    markersize=marker_size, color=marker_color)
+            intersections.append(("z2", vp_int, z_int))
+
+    return intersections
+
 def z_fig(df,formations,
              formation_well_name,
              sp_25, sp_75,vp_vs,
@@ -1059,6 +1146,7 @@ def z_fig(df,formations,
     minor_ticks=True,
     smooth_interval=None,
     output_mean=None,
+    plot_preliminar_depths=True,
     region=None
     ):
     
@@ -1085,7 +1173,7 @@ def z_fig(df,formations,
     for key, style in vel_model_style.items():
         legend_line = plt.Line2D(
             [0], [0], color=style["color"], lw=style["linewidth"],
-            linestyle=style["linestyle"], label=key
+            linestyle=style["linestyle"], label=key+" Average" 
         )
         vel_legend_handles.append(legend_line)
     
@@ -1158,6 +1246,7 @@ def z_fig(df,formations,
         # Replace inf values with NaN
         single_data.replace([np.inf, -np.inf], np.nan, inplace=True)
         single_data.dropna(inplace=True,subset=['Vp[km/s]'])
+
         
         if smooth_interval is not None:
             single_data['Depth_interval'] = (single_data['Depth[km]'] // smooth_interval) * smooth_interval
@@ -1230,6 +1319,7 @@ def z_fig(df,formations,
         # Create an empty DataFrame for results
         mean_velocity = pd.DataFrame({'Depth[km]': depth_bins})
 
+
         # Compute the mean velocity for each depth bin
         velocities = []
         for well, df in wells_data.items():
@@ -1261,13 +1351,13 @@ def z_fig(df,formations,
         guess = mean_velocity.copy()
         
         guess.loc[len(guess)] = [last_value['Depth[km]']+0.1, 6]
-        guess.loc[len(guess)] = [10, 6]
+        guess.loc[len(guess)] = [20, 6]
         ax.step(guess['Vp_mean[km/s]'], 
                     guess[depth], 
                     color="red",
                     linewidth=1.5, 
                     linestyle="--",
-                    # label="basement"
+                    # label="Median"
                     )
         
         if output_mean is not None:
@@ -1284,10 +1374,9 @@ def z_fig(df,formations,
         
         avg_vel = [my_vel.get_average_velocity(phase_hint="P", zmax=z) \
                                                     for z in z_values]
-        
         ax.plot(avg_vel, z_values, 'red', 
             linewidth=2.5, linestyle='-', 
-            label="Median")
+            label="Vp Average")
         
         vp = np.linspace(2,7,100)
         z1 = vp*(sp_25/(vp_vs-1))+ elevation_km
@@ -1297,11 +1386,20 @@ def z_fig(df,formations,
         ax.plot(vp,z2,color=z_color,linewidth=1.5)
         ax.fill_between(vp, z1, z2, color=z_color, alpha=0.3)  # Color span between y1 and y2
         
-        
+        if plot_preliminar_depths:
+            plot_intersections(ax,
+                   avg_vel=avg_vel,
+                   z_values=z_values,
+                   vp=vp,
+                   z1=z1,
+                   z2=z2,
+                   marker_size=10)
+
+
         legend_line2 = plt.Line2D(
             [0], [0], color="red", 
             lw=1.5, 
-            linestyle="--", label="Median",
+            linestyle="--", label="Vp Median",
         )
         well_legend_handles.append(legend_line2)
                 
@@ -1322,8 +1420,8 @@ def z_fig(df,formations,
     # ax.set_title(well_name)
     ax.set_xlabel("Velocity [km/s]")
     
-    ax.legend(handles=well_legend_handles, loc="lower left", 
-               fontsize=6, )
+    # ax.legend(handles=well_legend_handles, loc="lower left", 
+    #            fontsize=6, )
     
     # Add gridlines to the plot.
     if grid:
@@ -1332,7 +1430,7 @@ def z_fig(df,formations,
             ax.minorticks_on()  # Enable minor ticks
             ax.grid(color='gray', linewidth=0.5, linestyle=":", which='minor')
 
-    return ax,global_legend_handles,vel_legend_handles
+    return ax,global_legend_handles,vel_legend_handles, well_legend_handles
 
 
 if __name__ == "__main__":

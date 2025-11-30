@@ -10,7 +10,9 @@ color_regions = {1:"magenta",2:"blue",3:"green"}
 cmez_repository_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 data_path = os.path.join(cmez_repository_path, "data")
 
-sphighres_path = os.path.join(data_path,"earthquakes","SPHighRes","SPHighRes.csv")
+# sphighres_path = os.path.join(data_path,"earthquakes","SPHighRes","SPHighRes.csv")
+# sphighres_path = stations_path = os.path.join(data_path,"z","summary_standard_30km.csv")
+sphighres_path = stations_path = os.path.join(data_path,"z","summary_reloc_standard_30km.csv")
 stations_path = os.path.join(data_path,"stations","delaware_onlystations_160824.csv")
 basement_top_path =  os.path.join(data_path,"basement","cross_plot_data_31.7_-104.8_31.7_-103.8.csv")
 elevation_path =  os.path.join(data_path,"terrain","cross_elevation_plot_data_31.7_-104.8_31.7_-103.8.csv")
@@ -34,7 +36,8 @@ df = pd.read_csv(sphighres_path)
 
 
 color_regions = {1:"magenta",2:"blue",3:"green"}
-station_regions = {"PB35":1,"PB36":1,"PB28":1,"PB37":1,"SA02":2,"WB03":3,"PB24":3}
+station_regions = {"PB35":1,"PB36":1,"PB28":1,"PB37":1,"SA02":2,"WB03":3,"PB24":3,
+                   'PB26':2,'PB31':3}
 stations = stations[stations["station"].isin(list(station_regions.keys()))]
 stations["region"] = stations["station"].apply(lambda x: station_regions[x])
 stations["color"] = stations["region"].apply(lambda x: color_regions[x])
@@ -53,6 +56,7 @@ highres = df.copy()
 sp = df[df["Author_new"]=="S-P Method"].copy()
 reloc = df[df["Author_new"]!="S-P Method"].copy()
 
+sp = sp[sp["preferred"]==True]
 
 highres.rename(columns={"z_ori"+z_label:"depth"+z_label}, inplace=True)
 sp.rename(columns={"z_new"+z_label:"depth"+z_label}, inplace=True)
@@ -70,15 +74,15 @@ axes.append(fig.add_subplot(gs[0, 8:10], sharey=axes[0]))
 
 # First axis
 
-sns.kdeplot(x="longitude", y="depth_from_sea_level",  
-            data=sp[sp["region"]==1], ax=axes[0],
-            color="magenta", fill=True, alpha=0.3)
-sns.kdeplot(x="longitude", y="depth_from_sea_level",  
-            data=sp[(sp["region"]==2) & (sp["depth_from_sea_level"]>4)], ax=axes[0],
-            color="blue", fill=True, alpha=0.3)
-sns.kdeplot(x="longitude", y="depth_from_sea_level",  
-            data=sp[sp["region"]==3], ax=axes[0],
-            color="green", fill=True, alpha=0.3)
+# sns.kdeplot(x="longitude", y="depth_from_sea_level",  
+#             data=sp[sp["region"]==1], ax=axes[0],
+#             color="magenta", fill=True, alpha=0.3)
+# sns.kdeplot(x="longitude", y="depth_from_sea_level",  
+#             data=sp[(sp["region"]==2) & (sp["depth_from_sea_level"]>4)], ax=axes[0],
+#             color="blue", fill=True, alpha=0.3)
+# sns.kdeplot(x="longitude", y="depth_from_sea_level",  
+#             data=sp[sp["region"]==3], ax=axes[0],
+#             color="green", fill=True, alpha=0.3)
 
 # Plot Longitude vs Depth on the single axis
 axes[0].plot(cross_elv_data["Longitude"], cross_elv_data["Elevation"] ,
@@ -94,17 +98,45 @@ axes[0].plot(cross_plot_data["Longitude"], cross_plot_data["Elevation"],
 # print(df)
 # exit()
 sns.scatterplot(x="longitude", y="depth_from_sea_level", color="gray", 
-                data=highres, label="TexNet HighRes", ax=axes[0], s=20, alpha=0.5)
-sns.scatterplot(x="longitude", y="depth_from_sea_level", color="darkorange", marker="+",
+                data=highres, label="TexNet HighRes", 
+                ax=axes[0], 
+                s=10,
+                 alpha=0.2
+                 )
+sns.scatterplot(x="longitude", y="depth_from_sea_level",
+                color="darkorange", 
                 data=reloc, 
                 label="Relative relocation", 
                 ax=axes[0], 
-                s=20,
-                # alpha=0.2
+                s=10,
+                alpha=0.2
                 )
-sns.scatterplot(x="longitude", y="depth_from_sea_level", color="darkorange", 
-                edgecolor="red",linewidth=0.25,
-                data=sp, label="S-P Method", ax=axes[0], s=20, alpha=0.2)
+
+# sns.scatterplot(x="longitude", y="depth_from_sea_level",
+#                 color="darkorange", marker="+",
+#                 data=reloc, 
+#                 label="Relative relocation", 
+#                 ax=axes[0], 
+#                 s=20,
+#                 # alpha=0.2
+#                 )
+# sns.scatterplot(x="longitude", y="depth_from_sea_level", color="darkorange", 
+#                 edgecolor="red",linewidth=0.25,
+#                 data=sp, label="S-P Method", ax=axes[0], s=20, alpha=0.2)
+
+for region, color in color_regions.items():
+    sns.scatterplot(
+        x="longitude",
+        y="depth_from_sea_level",
+        data=sp[sp["region"] == region],
+        color=color,
+        edgecolor=color,
+        linewidth=0.25,
+        s=10,
+        alpha=0.5,  # increase visibility if needed
+        label=f"S-P Method Region {region}",
+        ax=axes[0]
+    )
 
 axes[0].scatter(stations["station_longitude"], stations["elevation"], 
                 color=stations["color"], s=100, marker="^", label="Stations")
@@ -158,24 +190,61 @@ axes[1].legend( fontsize=10)
 handles, labels = axes[0].get_legend_handles_labels()  # Get handles and labels from the legend
 for handle, label in zip(handles, labels):
     if label == "S-P Method":  # Apply higher opacity for the gray points
-        handle.set_alpha(1)  # Set full opacity (gray)
+        handle.set_alpha(0.7)  # Set full opacity (gray)
     elif label == "TexNet HighRes":  # Apply lower opacity for the orange points
-        handle.set_alpha(0.7)  # Set lower opacity (orange)
+        handle.set_alpha(1)  # Set lower opacity (orange)
     elif label == "Stations":
         handle.set_alpha(1)
     else:
         print(label)
         handle.set_alpha(1)
-legend = axes[0].legend(loc="lower left", fontsize=14,markerscale=2)
 
-for handle, text, label in zip(legend.legend_handles, legend.get_texts(), labels):
+
+# Get current handles and labels
+handles, labels = axes[0].get_legend_handles_labels()
+
+# Create a mapping of label -> handle for easier reordering
+handle_dict = dict(zip(labels, handles))
+
+# Define the new order of labels
+new_order = [
+    "Stations",              # put Stations last
+    "Elevation",
+    "Basement",
+    "TexNet HighRes",       # keep first
+    "S-P Method Region 1",  # your region-based labels
+    "S-P Method Region 2",
+    "S-P Method Region 3",
+    "Relative relocation",  # move this to the previous position of "Stations"
+    
+]
+
+# Reorder handles and labels according to new_order
+new_handles = [handle_dict[label] for label in new_order]
+new_labels = new_order
+
+# Create the legend with two columns
+legend = axes[0].legend(
+    handles=new_handles,
+    labels=new_labels,
+    loc="lower left",
+    fontsize=12,
+    markerscale=1.5,
+    ncol=2
+)
+# legend = axes[0].legend(loc="lower left", fontsize=14,markerscale=2,ncol=2 )
+
+for handle, text, label in zip(legend.legend_handles, legend.get_texts(), new_labels):
     if label == "Stations":
         # text.set_fontsize(10)  # Decrease text size
         handle.set_sizes([50])  # Reduce marker size (adjust value as needed)
     elif label == "S-P Method":
         handle.set_linewidth(2)  # Increase line thickness (adjust as needed)
+    elif label == "TexNet HighRes":
+        handle.set_sizes([50])  # ⬅ increase this number to make it larger    
     elif label == "Relative relocation":
         handle.set_linewidth(2)  # Increase line thickness (adjust as needed)
+        handle.set_sizes([50])
 # Adjust layout to avoid overlap
 plt.tight_layout()
 

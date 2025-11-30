@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import math
 from pyproj import Transformer
 from obspy.geodetics.base import gps2dist_azimuth
 

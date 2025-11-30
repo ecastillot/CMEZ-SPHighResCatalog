@@ -252,7 +252,7 @@ class Points(QuakeDataFrame):
         
         data[mask.columns.to_list()] = mask
         
-        data = data[data["r"] < r]
+        data = data[data["r"] <= r]
         
         if az is not None:
             data = data[data["az"] < az]

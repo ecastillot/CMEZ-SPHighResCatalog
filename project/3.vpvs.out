@@ -1,0 +1,199 @@
+Processing stations:   0%|          | 0/11 [00:00<?, ?it/s]/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:221: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  return pd.concat(all_dataframes, ignore_index=True)
+Processing stations:   9%|▉         | 1/11 [01:50<18:20, 110.04s/it]/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:221: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  return pd.concat(all_dataframes, ignore_index=True)
+Processing stations:  18%|█▊        | 2/11 [02:41<11:18, 75.38s/it] Processing stations:  27%|██▋       | 3/11 [02:41<05:29, 41.13s/it]Processing stations:  36%|███▋      | 4/11 [02:41<02:55, 25.05s/it]/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:221: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  return pd.concat(all_dataframes, ignore_index=True)
+Processing stations:  45%|████▌     | 5/11 [03:50<04:04, 40.73s/it]/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:221: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  return pd.concat(all_dataframes, ignore_index=True)
+Processing stations:  55%|█████▍    | 6/11 [04:50<03:56, 47.35s/it]/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:221: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  return pd.concat(all_dataframes, ignore_index=True)
+Processing stations:  64%|██████▎   | 7/11 [06:08<03:49, 57.31s/it]/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:221: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  return pd.concat(all_dataframes, ignore_index=True)
+Processing stations:  73%|███████▎  | 8/11 [07:05<02:52, 57.35s/it]/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:221: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  return pd.concat(all_dataframes, ignore_index=True)
+Processing stations:  82%|████████▏ | 9/11 [08:00<01:53, 56.56s/it]/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:221: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  return pd.concat(all_dataframes, ignore_index=True)
+Processing stations:  91%|█████████ | 10/11 [09:19<01:03, 63.27s/it]/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:197: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_sql_query(query, conn, params=sql_params, parse_dates=parse_dates)
+/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/SPHighRes/core/database/database.py:221: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  return pd.concat(all_dataframes, ignore_index=True)
+Processing stations: 100%|██████████| 11/11 [10:31<00:00, 66.08s/it]Processing stations: 100%|██████████| 11/11 [10:31<00:00, 57.41s/it]
+========================================
+Vp/Vs results for rmax=30 km:
+Station: PB24
+                 r_i            r_j  ...          tt_Si          tt_Sj
+count  108038.000000  108038.000000  ...  108038.000000  108038.000000
+mean        3.022196       4.619293  ...       2.751350       3.412890
+std         1.713355       2.782138  ...       0.541085       0.621407
+min         0.585691       0.585691  ...       0.973763       1.119959
+25%         2.122247       2.300804  ...       2.468000       2.996600
+50%         2.611624       3.717779  ...       2.603643       3.342037
+75%         3.256152       6.801642  ...       3.023497       3.839487
+max        23.524092      24.034905  ...       8.515609       8.554010
+
+[8 rows x 8 columns]
+Station: PB26
+                 r_i            r_j  ...          tt_Si          tt_Sj
+count  110637.000000  110637.000000  ...  110637.000000  110637.000000
+mean        4.470982       5.785599  ...       3.094402       3.543609
+std         1.561953       2.385613  ...       0.308436       0.440320
+min         1.436963       1.436963  ...       1.898648       1.967818
+25%         3.816381       4.264326  ...       2.934317       3.269042
+50%         4.411480       4.627121  ...       3.106000       3.438836
+75%         4.882723       7.759564  ...       3.243052       3.710538
+max        14.625356      15.621294  ...       5.598000       5.970834
+
+[8 rows x 8 columns]
+Station: PB28
+                r_i           r_j  ...         tt_Si         tt_Sj
+count  1.609935e+06  1.609935e+06  ...  1.609935e+06  1.609935e+06
+mean   7.269007e+00  1.115812e+01  ...  3.739832e+00  4.713922e+00
+std    4.303637e+00  4.724507e+00  ...  9.747591e-01  1.234603e+00
+min    6.417358e-02  6.417358e-02  ...  1.695666e+00  2.002490e+00
+25%    4.043454e+00  8.334599e+00  ...  2.928322e+00  3.838133e+00
+50%    8.083963e+00  1.035802e+01  ...  3.723171e+00  4.402539e+00
+75%    9.847207e+00  1.308281e+01  ...  4.262950e+00  5.202230e+00
+max    2.794729e+01  2.898685e+01  ...  9.440003e+00  9.728578e+00
+
+[8 rows x 8 columns]
+Station: PB31
+                 r_i            r_j  ...          tt_Si          tt_Sj
+count  209650.000000  209650.000000  ...  209650.000000  209650.000000
+mean       14.571357      17.842871  ...       5.603194       6.547281
+std         5.415237       5.590103  ...       1.468101       1.575976
+min         2.280133       2.280133  ...       2.400735       2.568753
+25%        11.033616      14.443424  ...       4.599432       5.511000
+50%        14.538640      17.609766  ...       5.521535       6.491903
+75%        19.704416      22.645347  ...       6.964225       7.942768
+max        29.183119      29.590400  ...      10.167852      10.292621
+
+[8 rows x 8 columns]
+Station: PB35
+                 r_i            r_j  ...          tt_Si          tt_Sj
+count  253923.000000  253923.000000  ...  253923.000000  253923.000000
+mean        3.033758       4.904149  ...       2.774730       3.242398
+std         1.297355       2.392529  ...       0.298085       0.461773
+min         0.159555       0.159555  ...       1.584090       1.613412
+25%         2.231944       2.973582  ...       2.625929       2.953994
+50%         2.854015       4.486483  ...       2.785933       3.096799
+75%         3.453097       6.482350  ...       2.935591       3.432062
+max        21.577524      22.523189  ...       7.511300       7.839682
+
+[8 rows x 8 columns]
+Station: PB36
+                r_i           r_j  ...         tt_Si         tt_Sj
+count  76351.000000  76351.000000  ...  76351.000000  76351.000000
+mean       2.068756      3.982995  ...      2.873089      3.240381
+std        1.395083      2.374811  ...      0.226254      0.327323
+min        0.171667      0.171667  ...      2.255626      2.283988
+25%        0.810232      2.188345  ...      2.764699      3.009322
+50%        1.948532      3.845218  ...      2.889467      3.142407
+75%        2.774457      5.409566  ...      2.993263      3.427531
+max       15.584311     15.584311  ...      5.669369      5.986788
+
+[8 rows x 8 columns]
+Station: PB37
+               r_i          r_j  ...        tt_Si        tt_Sj
+count  6148.000000  6148.000000  ...  6148.000000  6148.000000
+mean      2.906986     5.044678  ...     2.631245     3.230538
+std       1.854397     3.052779  ...     0.370596     0.610598
+min       0.599947     0.599947  ...     1.422064     1.983726
+25%       1.337615     2.364404  ...     2.494284     2.797397
+50%       2.828910     5.429111  ...     2.630106     3.008968
+75%       3.953248     6.416105  ...     2.765120     3.563792
+max      18.187326    24.580804  ...     5.908123    10.274872
+
+[8 rows x 8 columns]
+Station: SA02
+                 r_i            r_j  ...          tt_Si          tt_Sj
+count  504159.000000  504159.000000  ...  504159.000000  504159.000000
+mean        4.955849       7.412897  ...       3.260735       3.890157
+std         2.173001       2.968711  ...       0.514162       0.667477
+min         0.266138       0.266138  ...       1.415608       1.513855
+25%         3.425569       5.511613  ...       3.092374       3.432115
+50%         4.559105       7.004554  ...       3.274629       3.668154
+75%         6.360904       9.357478  ...       3.436422       4.286664
+max        29.588060      29.959707  ...       9.991377      10.082051
+
+[8 rows x 8 columns]
+Station: WB03
+                r_i           r_j  ...         tt_Si         tt_Sj
+count  92549.000000  92549.000000  ...  92549.000000  92549.000000
+mean       1.707412      1.988680  ...      2.947258      3.374570
+std        1.830338      2.625923  ...      0.426582      0.453800
+min        0.065554      0.065554  ...      1.568868      1.874246
+25%        0.718368      0.706421  ...      2.715809      3.126260
+50%        1.274407      0.976395  ...      2.932269      3.350644
+75%        2.094671      2.173874  ...      3.111824      3.524345
+max       23.238688     23.743894  ...      8.352924      8.519271
+
+[8 rows x 8 columns]

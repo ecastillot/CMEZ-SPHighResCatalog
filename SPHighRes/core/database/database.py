@@ -20,6 +20,23 @@ def save_to_sqlite(df, db_path, table_name):
         # If the table exists, new rows are appended; otherwise, a new table is created
         df.to_sql(table_name, conn, if_exists='append', index=False)
 
+def save_catalog_split_by_station(df, db_path_out, station_col="station", if_exists="replace"):
+    """
+    Save a merged catalog DataFrame into a new SQLite DB, splitting by station.
+    Creates one table per station (same names as original).
+
+    Args:
+        df (DataFrame): Catalog with all stations merged.
+        db_path_out (str): Output SQLite DB file path.
+        station_col (str): Column name that identifies stations (default: "station").
+        if_exists (str): 'replace' or 'append'. Default: replace tables if they exist.
+    """
+    with sqlite3.connect(db_path_out) as conn:
+        print(df[["ev_id","station"]])
+        for station, sub_df in df.groupby(station_col):
+            print(f"Saving station: {station}  ({len(sub_df)} rows)")
+            sub_df.to_sql(station, conn, if_exists=if_exists, index=False)
+
 def load_from_sqlite(
     db_path, tables=None, custom_params=None,
     parse_dates=None, drop_duplicates=True, sortby=None,
@@ -61,7 +78,6 @@ def load_from_sqlite(
         tables_query = "SELECT name FROM sqlite_master WHERE type='table';"
         
         all_tables = pd.read_sql_query(tables_query, conn)['name'].tolist()
-        
         if tables is None:
             tables = all_tables # Only use the specified table
         else:

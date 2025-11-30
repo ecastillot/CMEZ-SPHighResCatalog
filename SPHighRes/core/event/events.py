@@ -14,12 +14,12 @@ from datetime import datetime
 
 
 def get_texnet_original_usgs_catalog(path,xy_epsg,author,
-                                       depth_lims=[0,20],
+                                       depth_lims=None,
                                         region_lims=None):
     df = pd.read_csv(path,parse_dates=["origin_time"],header=1)
-    
+    df["depth"] = df["depth"].astype(float)/1e3
     catalog = Events(df,xy_epsg=xy_epsg,author=author)
-    
+
     if depth_lims is not None:
         catalog.filter("depth",start=depth_lims[0],end=depth_lims[1])
     
@@ -32,7 +32,7 @@ def get_texnet_original_usgs_catalog(path,xy_epsg,author,
     return catalog
 
 def get_texnet_original_catalog(path,xy_epsg,author,
-                                       depth_lims=[0,20],
+                                       depth_lims=None,
                                         region_lims=None):
     df = pd.read_csv(path)
 # EventID,Evaluation Status,Origin Date,Origin Time,Local Magnitude,Moment Magnitude,
@@ -95,7 +95,7 @@ def get_texnet_high_resolution_catalog(path,xy_epsg,author,
                                 "EventId":"ev_id"})
     
     catalog = Events(df,xy_epsg=xy_epsg,author=author)
-    
+
     if depth_lims is not None:
         catalog.filter("depth",start=depth_lims[0],end=depth_lims[1])
     

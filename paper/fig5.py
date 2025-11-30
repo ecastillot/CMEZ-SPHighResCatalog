@@ -10,23 +10,45 @@ import string
 from matplotlib import colors as mcolors
 import matplotlib.pyplot as plt
 from SPHighRes.core.enverus.enverus import z_fig
-
+from matplotlib.patches import Patch
 data_path = os.path.join(cmez_repository_path, "data")
 
 mydata = os.path.join(data_path,"vp","wells_aoi_all.csv")
 formations = os.path.join(data_path,"vp","env_csv-FormationTops-332ba_2024-12-23.csv")
 stations_path = os.path.join(data_path,"stations","delaware_onlystations_160824.csv")
 output_fig = os.path.join(os.path.dirname(__file__),"fig5.png")
-sp_path = os.path.join(data_path,"ts_tp","s_p_times.csv")
-
-custom_palette = {"PB36": {"color":"#26fafa","region":1,"vp/vs":1.72}, 
-                  "PB35": {"color":"#2dfa26","region":1,"vp/vs":1.69}, 
-                  "PB28": {"color":"#ad16db","region":1,"vp/vs":1.70}, 
-                  "PB37": {"color":"#1a3be3","region":1,"vp/vs":1.70}, 
-                  "SA02": {"color":"#f1840f","region":2,"vp/vs":1.72}, 
-                  "WB03": {"color":"gray","region":3,"vp/vs":1.65}, 
-                  "PB24": {"color":"#0ea024","region":3,"vp/vs":1.65}, 
+# sp_path = os.path.join(data_path,"ts_tp","s_p_times.csv")
+sp_path = "/groups/igonin/ecastillo/CMEZ-SPHighResCatalog/data/sp/3_km/sp_data.csv"
+custom_palette = {"PB36": {"color":"magenta","region":1,"vp/vs":1.72}, 
+                  "PB35": {"color":"magenta","region":1,"vp/vs":1.69}, 
+                  "PB28": {"color":"magenta","region":1,"vp/vs":1.70}, 
+                  "PB37": {"color":"magenta","region":1,"vp/vs":1.70}, 
+                  "SA02": {"color":"blue","region":2,"vp/vs":1.72}, 
+                #   "PB26": {"color":"blue","region":2,"vp/vs":1.7}, 
+                #   "PB31": {"color":"green","region":3,"vp/vs":1.67}, 
+                  "WB03": {"color":"green","region":3,"vp/vs":1.65}, 
+                  "PB24": {"color":"green","region":3,"vp/vs":1.65}, 
                   }
+
+# custom_palette = {"PB36": {"color":"gray","region":1,"vp/vs":1.72}, 
+#                   "PB35": {"color":"gray","region":1,"vp/vs":1.69}, 
+#                   "PB28": {"color":"gray","region":1,"vp/vs":1.70}, 
+#                   "PB37": {"color":"gray","region":1,"vp/vs":1.70}, 
+#                   "SA02": {"color":"gray","region":2,"vp/vs":1.72}, 
+#                   "PB26": {"color":"gray","region":2,"vp/vs":1.7}, 
+#                   "PB31": {"color":"gray","region":3,"vp/vs":1.67}, 
+#                   "WB03": {"color":"gray","region":3,"vp/vs":1.65}, 
+#                   "PB24": {"color":"gray","region":3,"vp/vs":1.65}, 
+#                   }
+
+# custom_palette = {"PB36": {"color":"#26fafa","region":1,"vp/vs":1.72}, 
+#                   "PB35": {"color":"#2dfa26","region":1,"vp/vs":1.69}, 
+#                   "PB28": {"color":"#ad16db","region":1,"vp/vs":1.70}, 
+#                   "PB37": {"color":"#1a3be3","region":1,"vp/vs":1.70}, 
+#                   "SA02": {"color":"#f1840f","region":2,"vp/vs":1.72}, 
+#                   "WB03": {"color":"gray","region":3,"vp/vs":1.65}, 
+#                   "PB24": {"color":"#0ea024","region":3,"vp/vs":1.65}, 
+#                   }
 
 
 # custom_palette = {"PB36": {"color":"#26fafa","region":1,"vp/vs":1.725}, 
@@ -77,6 +99,8 @@ custom_palette["PB35"]["data"] = data1
 custom_palette["PB28"]["data"] = data1
 custom_palette["PB37"]["data"] = data1
 custom_palette["SA02"]["data"] = data2
+# custom_palette["PB26"]["data"] = data2
+# custom_palette["PB31"]["data"] = data3
 custom_palette["WB03"]["data"] = data3
 custom_palette["PB24"]["data"] = data3
 
@@ -85,6 +109,8 @@ custom_palette["PB35"]["form"] = form_r1
 custom_palette["PB28"]["form"] = form_r1
 custom_palette["PB37"]["form"] = form_r1
 custom_palette["SA02"]["form"] = form_r2
+# custom_palette["PB26"]["form"] = form_r2
+# custom_palette["PB31"]["form"] = form_r3
 custom_palette["WB03"]["form"] = form_r3
 custom_palette["PB24"]["form"] = form_r3
 
@@ -209,14 +235,14 @@ for i,station in enumerate(order):
         print(station,sp_t1,sp_t2,vpvs,region)
         # continue
 
-        ax_1,lg1_1,lg2_1 = z_fig(data,
+        ax_1,lg1_1,lg2_1,lg3_1 = z_fig(data,
                                  formations,
                                  form,
                                  sp_t1, sp_t2,vpvs,
                 stratigraphy=stratigraphy,                 
                 ax=axes[i],
                 z_color=custom_palette[station]["color"],
-                ylims=(-2,14),
+                ylims=(-2,12),
                 xlims=(1.5,6.5),
                 form_linestyle = "dashed",
                 smooth_interval=precision,
@@ -272,6 +298,8 @@ for i,station in enumerate(order):
 #          )
 
 
+
+
 # # Sort and add legend for formations.
 global_legend_handles = {k: v for d in [lg1_1] for k, v in d.items()}
 # fig.legend(handles=list(global_legend_handles.values()), loc="upper left", title="Formations", 
@@ -279,11 +307,25 @@ global_legend_handles = {k: v for d in [lg1_1] for k, v in d.items()}
 global_legend_handles = {k: global_legend_handles[k] for k in strata if k in global_legend_handles}
 fig.legend(handles=list(global_legend_handles.values()), 
            loc="upper left",title="Formations",
-           fontsize=10, ncol=3, bbox_to_anchor=(0.1, 0.2))
+        #    fontsize=10, ncol=3, bbox_to_anchor=(0.05, 0.2))
+           fontsize=10, ncol=3, bbox_to_anchor=(0.05, 0.19))
 
 # # Add velocity model legend to the figure.
-fig.legend(handles=lg2_1, loc="upper left", title="Average Velocity Model",
-           fontsize=10, ncol=1, bbox_to_anchor=(0.7, 0.2))
+fig.legend(handles=lg2_1+lg3_1, loc="upper left", title="Velocity Model",
+           fontsize=10, ncol=3, bbox_to_anchor=(0.61, 0.14))
+
+# Create custom legend handles
+region_handles = [
+    Patch(facecolor="magenta", label="R1"),
+    Patch(facecolor="blue", label="R2"),
+    Patch(facecolor="green", label="R3"),
+]
+# Add legend to lower-left corner
+fig.legend(
+    handles=region_handles,
+    title="Region",
+    loc="upper left",
+    fontsize=10, ncol=3, bbox_to_anchor=(0.7, 0.2))
 
 # Finalize layout and save or display the plot.
 fig.tight_layout()

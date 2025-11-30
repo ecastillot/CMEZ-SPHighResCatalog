@@ -31,19 +31,20 @@ def prepare_sp_analysis(cat, picks, cat_columns_level=1):
     # Convert arrival and origin times to datetime for time-based calculations
     picks["time"] = pd.to_datetime(picks["time"],format="mixed")
     cat["origin_time"] = pd.to_datetime(cat["origin_time"],format="mixed")
-    # print(cat.info())
-    # print(cat[cat["ev_id"]=="texnet2023yvik"][ ["yr","mon","day","hr","min_","sec",
-    #                                           "origin_time","ev_id"]])
-    # print(picks[picks["ev_id"]=="texnet2023yvik"])
-    # exit()
     
+    # Remove duplicate events in the catalog, keeping the first occurrence
+    # cat = cat.drop_duplicates(ignore_index=True, keep="first")
+    # cat["preferred"] = cat["r"] == cat.groupby("ev_id")["r"].transform("min")
+    # cat = cat[cat["preferred"]]
+    # cat_columns = ["ev_id", "origin_time", "eq_latitude", "eq_longitude", "magnitude","preferred"]
+
+    # Remove duplicate events in the catalog, keeping the first occurrence
+    cat = cat.drop_duplicates(ignore_index=True, keep="first")
 
     # Define the essential columns to keep in each DataFrame
     cat_columns = ["ev_id", "origin_time", "eq_latitude", "eq_longitude", "magnitude"]
     picks_columns = ["ev_id", "station", "phase_hint", "time","latitude", "longitude"]
 
-    # Remove duplicate events in the catalog, keeping the first occurrence
-    cat = cat.drop_duplicates(ignore_index=True, keep="first")
     
     # Drop picks with missing phase hints and filter for P and S phase hints only
     picks = picks.dropna(subset="phase_hint")
@@ -51,36 +52,43 @@ def prepare_sp_analysis(cat, picks, cat_columns_level=1):
     
     # Remove duplicate picks by event ID, station, and phase hint
     picks = picks.drop_duplicates(subset=["ev_id", "station", "phase_hint"], ignore_index=True)
-
+    # print(picks)
     # Select only the specified columns from the catalog
     cat = cat[cat_columns]
     picks = picks[picks_columns]
-    
         
     # # Merge picks with the catalog data on event ID
     picks = pd.merge(picks, cat, on=["ev_id"])
-    
+
+
     # Calculate distance and azimuth between event and station locations
     picks = get_distance_in_dataframe(
         data=picks, lat1_name="eq_latitude", lon1_name="eq_longitude", 
         lat2_name="latitude", lon2_name="longitude"
     )
 
+    picks["preferred"] = picks["r"] == picks.groupby("ev_id")["r"].transform("min")
+    # picks = picks[picks["preferred"]]
+    # print(picks)
+    # exit()
+    # picks = picks.drop_duplicates(subset=["ev_id","station","phase_hint"], keep=False)
+
     # Calculate travel time as the difference between arrival and origin time
     picks["tt"] = (picks["time"] - picks["origin_time"]).dt.total_seconds()
 
     # Keep only the necessary columns
-    picks = picks[picks_columns + ["tt", "r", "az"]]
+    picks = picks[picks_columns + ["preferred","tt", "r", "az"]]
     
-    picks.drop_duplicates(subset=["ev_id", "station", "r", "az","time"],inplace=True)
-    
+
+    # picks.drop_duplicates(subset=["ev_id", "station", "r", "az","time"],inplace=True)
+    picks.drop_duplicates(subset=["ev_id", "station", "phase_hint",],inplace=True)
+
     # Reset the index of the DataFrame
     picks.reset_index(inplace=True, drop=True)
     
-    print(picks)
     
     # Pivot the DataFrame to have separate columns for P and S phases
-    picks = picks.pivot(index=["ev_id", "station", "r", "az"], 
+    picks = picks.pivot(index=["ev_id", "station", "r", "az","preferred"], 
                         columns="phase_hint", values=["time", "tt"]).reset_index()
     
     # Flatten multi-level columns for simplicity
@@ -93,9 +101,14 @@ def prepare_sp_analysis(cat, picks, cat_columns_level=1):
     picks.sort_values(by="tt_P", inplace=True, ignore_index=True)
     
     # Select the final set of columns for the picks DataFrame
-    picks_columns = ["ev_id", "station", "r", "az", "tt_P", "tt_S"]
+    picks_columns = ["ev_id", "station", "preferred","r", "az", "tt_P", "tt_S"]
     picks = picks[picks_columns]
     
+    # picks = picks.drop_duplicates(subset=["ev_id","station"], keep=False)
+
+    # ev_ids = picks["ev_id"].unique()
+    # cat = cat[cat["ev_id"].isin(ev_ids)].reset_index(drop=True)
+
     return cat, picks
 
 def plot_times_by_station(data,title=None,show: bool = True, 
